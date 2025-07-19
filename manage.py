@@ -3,7 +3,7 @@
 import os
 import sys
 
-#Adicionando cometário para fazer o PullRequest
+#comentário para pullRequest
 
 def main():
     """Run administrative tasks."""
