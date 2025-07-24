@@ -18,8 +18,12 @@ Including another URLconf
 #comentário para pullRequest
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path, include
+import debug_toolbar
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path('__debug__/', include(debug_toolbar.urls)),
+    path('admin/', admin.site.urls),
+    re_path(r'bookstore/(?P<version>(v1|v2))/', include('order.urls')),
+    re_path(r'bookstore/(?P<version>(v1|v2))/', include('product.urls'))
 ]
