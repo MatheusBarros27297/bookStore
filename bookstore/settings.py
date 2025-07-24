@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
+    'order',
+    'product',
+    "debug_toolbar",
+    "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
@@ -48,6 +52,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "bookstore.urls"
@@ -60,6 +66,7 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
+                "django.template.context_processors.debug",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
@@ -121,3 +128,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 5,
+}
