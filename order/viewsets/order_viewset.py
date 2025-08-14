@@ -8,4 +8,4 @@ from rest_framework.permissions import IsAuthenticated
 class OrderViewSet(ModelViewSet):
     serializer_class = OrderSerializer
     queryset = Order.objects.all().order_by('id')
-    permission_classes = [IsAuthenticated]
+    
