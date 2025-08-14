@@ -35,4 +35,7 @@ jobs:
 
     - name: Test
       run: |
+        env:
+        SECRET_KEY: 'foo'
+        DEBUG: '1'
         poetry run python manage.py test
