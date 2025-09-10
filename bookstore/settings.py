@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "order",
     "product",
     "rest_framework",
-    "debug_toolbar",
     "rest_framework.authtoken",
 ]
 
@@ -54,7 +53,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "bookstore.urls"
@@ -156,4 +154,8 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 
 # 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1 localhost").split()
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1 localhost", "https://matheus27.pythonanywhere.com/").split()
+if DEBUG:
+    INSTALLED_APPS.append('debug_toolbar')
+    MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
+    INTERNAL_IPS = ['127.0.0.1']
